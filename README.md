@@ -1,11 +1,11 @@
 ## fake-mongo
 
 Populates a mongodb instance with fake data generated from a mongoke configuration.
-Str generates alphanumeric garbage, to generate data that is somewhat readable you can use some of these aliases:
-- FirstName
-- LastName
-- Email
-- Address
+`Str` generates alphanumeric garbage, to generate data that is somewhat readable you can use some of these aliases:
+- `FirstName`
+- `LastName`
+- `Email`
+- `Address`
 
 One example of config can be this:
 ```
