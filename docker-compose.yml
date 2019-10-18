@@ -1,0 +1,12 @@
+version: '3'
+
+
+services:
+    populate-db:
+        iamge: mongoke/populate-mongo
+        volumes:
+            - ./mongoke.yml/:/conf.yml
+        environment:
+            - DB_URL=mongodb://mongo/db
+    mongo:
+        image: mongo
