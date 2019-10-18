@@ -2,4 +2,4 @@ skema
 funcy
 motor
 pyyaml
-mongoke>=0.0.3
+mongoke>=0.0.4
