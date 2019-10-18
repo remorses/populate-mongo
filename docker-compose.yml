@@ -3,10 +3,15 @@ version: '3'
 
 services:
     populate-db:
-        iamge: mongoke/populate-mongo
+        # image: mongoke/populate-mongo
+        build: .
         volumes:
             - ./mongoke.yml/:/conf.yml
         environment:
             - DB_URL=mongodb://mongo/db
     mongo:
         image: mongo
+        ports:
+        - 27017:27017
+        logging: 
+            driver: none

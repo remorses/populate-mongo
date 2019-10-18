@@ -24,9 +24,12 @@ async def main(config, url, custom_resolvers={}):
     for typename, config in config['types'].items():
         items = skema.fake_data(schema, ref=typename, amount=10, resolvers=custom_resolvers)
         # print(dir(db[collection]))
-        collection: Collection = db[config['collection']]
-        print(f'persisting {len(items)} documents in {collection.name} in db {collection.database.name}')
-        await collection.insert_many(items,)
+        config = config or {}
+        coll_name = config.get('collection', None)
+        if coll_name:
+            collection: Collection = db[coll_name]
+            print(f'persisting {len(items)} documents in {collection.name} in db {collection.database.name}')
+            await collection.insert_many(items,)
 
 
 if __name__ == '__main__':

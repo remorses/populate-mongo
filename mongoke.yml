@@ -1,0 +1,9 @@
+
+
+skema: |
+    User:
+        name: Str
+
+types:
+    User:
+        collection: users
