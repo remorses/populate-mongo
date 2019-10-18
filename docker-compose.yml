@@ -1,6 +1,4 @@
 version: '3'
-
-
 services:
     populate-db:
         # image: mongoke/populate-mongo
