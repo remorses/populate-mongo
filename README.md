@@ -41,9 +41,9 @@ types:
 ```
 
 ## Env Vars
-- **DB_URL** the database url **with the database name**
-- **LOCALE** default is "en", the locale used to generate the fake data, read more in [mimesis](https://mimesis.name/getting_started.html#supported-locales) documentation
-- **DOCUMENTS_PER_COLLECTION**, default is 20 how many documents create for every collection
+- **`DB_URL`** the database url **with the database name**
+- **`LOCALE`** default is "en", the locale used to generate the fake data, read more in [mimesis](https://mimesis.name/getting_started.html#supported-locales) documentation
+- **`DOCUMENTS_PER_COLLECTION`**, default is 20, how many documents create for every collection
 
 
 ## Usage
