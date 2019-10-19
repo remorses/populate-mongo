@@ -1,7 +1,7 @@
 import os
 from mimesis import Generic, Person, Business, Datetime, Text, Address
 
-LOCALE = os.getenv('LOCALE') or 'env'
+LOCALE = os.getenv('LOCALE') or 'en'
 
 # generic = Generic(LOCALE)
 person = Person(LOCALE)

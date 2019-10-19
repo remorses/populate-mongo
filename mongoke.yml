@@ -6,6 +6,7 @@ skema: |
         name: FirstName
         address: Address
         random: Random
+        car_ids: [ObjectId]
     Car:
         _id: ObjectId
         user_id: ObjectId
@@ -25,4 +26,5 @@ relations:
         field: cars
         relation_type: to_many
         where:
-            user_id: ${{ parent['_id'] }}
+            _id: 
+                $in: ${{ parent['car_ids'] }}
