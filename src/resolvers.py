@@ -1,16 +1,19 @@
+import os
 from mimesis import Generic, Person, Business, Datetime, Text, Address
 
-generic = Generic('en')
-person = Person('en')
-text = Person('en')
-date = Datetime('en')
-business = Business('en')
-address = Address('en')
+LOCALE = os.getenv('LOCALE') or 'env'
+
+# generic = Generic(LOCALE)
+person = Person(LOCALE)
+text = Person(LOCALE)
+date = Datetime(LOCALE)
+business = Business(LOCALE)
+address = Address(LOCALE)
 
 resolvers: dict = {
     'Email': person.email,
     'FullName': person.full_name,
-    'Name': person.name,
+    'FirstName': person.name,
     'LastName': person.last_name,
     'Username': person.username,
     'Age': person.age,

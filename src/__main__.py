@@ -14,7 +14,7 @@ from motor.core import Collection
 from .resolvers import resolvers
 
 CONF_PATH = "/conf.yml"
-DOCUMENTS_PER_COLLECTION = 20
+DOCUMENTS_PER_COLLECTION = int(os.getenv('DOCUMENTS_PER_COLLECTION') or 20)
 DB_URL = os.getenv("DB_URL")
 if not DB_URL:
     print("missing DB_URL from env")
@@ -52,7 +52,7 @@ async def main(config, url):
             r = random.Random()
             def pick_id():
                 id = r.choice(ids)
-                print(f'[{typename}] picking id {id} from {related_collections} pool')
+                # print(f'[{typename}] picking id {id} from {related_collections} pool')
                 return id
             custom_resolvers_map = {"ObjectId": lambda: pick_id(), **resolvers}
         else:

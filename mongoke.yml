@@ -3,12 +3,15 @@
 skema: |
     User:
         _id: ObjectId
-        name: Str
+        name: FirstName
+        address: Address
         random: Random
     Car:
         _id: ObjectId
         user_id: ObjectId
     Random: Float
+    FirstName: Str
+    Address: Str
 
 types:
     User:

@@ -1,12 +1,15 @@
 ## fake-mongo
 
 Populates a mongodb instance with fake data generated from a mongoke configuration.
+Also creates some random relations between types, following the relations field of the configurations puts a random ObjectId from one of the related collections in fileds of type ObjectId.
+
+## Fake Data
 `Str` generates alphanumeric garbage, to generate data that is somewhat readable you can use some of these aliases:
 <--! to update use regex '(\w+)':.*, --->
 ```yml
 Email: Str
 FullName: Str
-Name: Str
+FirstName: Str
 LastName: Str
 Username: Str
 Age: Int
@@ -37,6 +40,13 @@ types:
         collection: users
 ```
 
+## Env Vars
+- **DB_URL** the database url **with the database name**
+- **LOCALE** default is "en", the locale used to generate the fake data, read more in [mimesis](https://mimesis.name/getting_started.html#supported-locales) documentation
+- **DOCUMENTS_PER_COLLECTION**, default is 20 how many documents create for every collection
+
+
+## Usage
 Run inside docker compose like this:
 ```yml
 # docker-compose.yml
