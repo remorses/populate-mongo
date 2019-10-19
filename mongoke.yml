@@ -2,8 +2,24 @@
 
 skema: |
     User:
+        _id: ObjectId
         name: Str
+        random: Random
+    Car:
+        _id: ObjectId
+        user_id: ObjectId
+    Random: Float
 
 types:
     User:
         collection: users
+    Car:
+        collection: cars
+
+relations:
+    -   from: User
+        to: Car
+        field: cars
+        relation_type: to_many
+        where:
+            user_id: ${{ parent['_id'] }}
