@@ -27,7 +27,7 @@ services:
 
 ## Fake Data
 `Str` generates alphanumeric garbage, to generate data that is somewhat readable you can use some of these aliases:
-<--! to update use regex '(\w+)':.*, --->
+<!-- to update use regex '(\w+)':.*, -->
 ```yml
 Email: Str
 FullName: Str
