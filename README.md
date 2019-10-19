@@ -2,10 +2,24 @@
 
 Populates a mongodb instance with fake data generated from a mongoke configuration.
 `Str` generates alphanumeric garbage, to generate data that is somewhat readable you can use some of these aliases:
-- `FirstName`
-- `LastName`
-- `Email`
-- `Address`
+<--! to update use regex '(\w+)':.*, --->
+```yml
+Email: Str
+FullName: Str
+Name: Str
+LastName: Str
+Username: Str
+Age: Int
+Telephone: Str
+Language: Str
+DateTime: Any
+Date: Any
+Time: Any
+TimeStamp: Any
+Price: Str
+Address: Str
+City: Str
+```
 
 One example of config can be this:
 ```

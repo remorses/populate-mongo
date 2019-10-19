@@ -11,7 +11,7 @@ from mongoke.support import get_skema
 from mongoke.skema_support import get_type_properties, get_schema
 from motor.motor_asyncio import AsyncIOMotorClient
 from motor.core import Collection
-
+from .resolvers import resolvers
 
 CONF_PATH = "/conf.yml"
 DOCUMENTS_PER_COLLECTION = 20
@@ -20,9 +20,6 @@ if not DB_URL:
     print("missing DB_URL from env")
 
 
-resolvers: dict = {
-
-}
 
 
 def get_related_couples(config) -> Dict[str, set]:
