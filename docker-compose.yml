@@ -11,7 +11,7 @@ services:
     mongoke:
         ports:
             - 8090:80
-        image: mongoke/mongoke:latest
+        image: mongoke/mongoke
         environment: 
             - DB_URL=mongodb://mongo/db
         volumes: 

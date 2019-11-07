@@ -1,6 +1,7 @@
-skema
+mongoke>=1.0.3
 funcy
 motor
 pyyaml
 mimesis
-mongoke>=0.0.4
+skema>=2.0.3
+graphql-core>=3a

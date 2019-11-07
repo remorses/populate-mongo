@@ -6,14 +6,15 @@ import bson
 from bson.objectid import ObjectId
 import asyncio
 from funcy import post_processing, merge, flatten
-import skema
-from mongoke.support import get_skema
-from mongoke.skema_support import get_type_properties, get_schema
+from skema.fake_data import fake_data
+from skema.reconstruct import from_graphql
+from mongoke.support import get_types_schema
+# from mongoke.skema_support import get_type_properties, get_schema
 from motor.motor_asyncio import AsyncIOMotorClient
 from motor.core import Collection
 from .resolvers import resolvers
 
-CONF_PATH = "/conf.yml"
+CONF_PATH = os.getenv('CONF_PATH') or "/conf.yml"
 DOCUMENTS_PER_COLLECTION = int(os.getenv('DOCUMENTS_PER_COLLECTION') or 20)
 DB_URL = os.getenv("DB_URL")
 if not DB_URL:
@@ -32,12 +33,17 @@ def get_related_couples(config) -> Dict[str, set]:
     
     return result
 
+defaults_scalars = '''
+ObjectId: Any
+'''
 
 async def main(config, url):
     config = config or {}
     db: AsyncIOMotorClient = AsyncIOMotorClient(url).get_database()
-    schema = get_skema(config, "/")
-
+    schema = get_types_schema(config, "/")
+    schema = schema + '\nscalar ObjectId\n'
+    schema = from_graphql(schema)
+    schema = schema + defaults_scalars
     object_ids_pool = {
         name: [bson.ObjectId() for i in range(DOCUMENTS_PER_COLLECTION)]
         for name, _ in config["types"].items()
@@ -57,7 +63,7 @@ async def main(config, url):
             custom_resolvers_map = {"ObjectId": lambda: pick_id(), **resolvers}
         else:
             custom_resolvers_map = {"ObjectId": ObjectId, **resolvers}
-        items = skema.fake_data(
+        items = fake_data(
             schema,
             ref=typename,
             amount=DOCUMENTS_PER_COLLECTION,

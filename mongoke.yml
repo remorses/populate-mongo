@@ -1,18 +1,20 @@
 
 
-skema: |
-    User:
+schema: |
+    type User {
         _id: ObjectId
         name: FirstName
         address: Address
         random: Random
         car_ids: [ObjectId]
-    Car:
+    }
+    type Car {
         _id: ObjectId
         user_id: ObjectId
-    Random: Float
-    FirstName: Str
-    Address: Str
+    }
+    scalar Random
+    scalar FirstName
+    scalar Address
 
 types:
     User:
