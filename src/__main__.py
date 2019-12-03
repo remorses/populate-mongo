@@ -35,13 +35,21 @@ def get_related_couples(config) -> Dict[str, set]:
 
 defaults_scalars = '''
 ObjectId: Any
+DateTime: Any
+Date: Any
+Time: Any
+ID: Str
+'''
+
+default_graphql_scalars = '''
+scalar ObjectId
 '''
 
 async def main(config, url):
     config = config or {}
     db: AsyncIOMotorClient = AsyncIOMotorClient(url).get_database()
     schema = get_types_schema(config, "/")
-    schema = schema + '\nscalar ObjectId\n'
+    schema = schema + default_graphql_scalars
     schema = from_graphql(schema)
     schema = schema + defaults_scalars
     object_ids_pool = {
