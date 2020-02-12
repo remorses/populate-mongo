@@ -3,5 +3,5 @@ funcy
 motor
 pyyaml
 mimesis
-skema>=2.0.3
+skema>=3.0.19
 graphql-core>=3a
