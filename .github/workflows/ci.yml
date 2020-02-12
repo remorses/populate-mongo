@@ -4,14 +4,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Use Node.js ${{ matrix.node-version }}
+    -   uses: actions/checkout@master
+    -   name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
             node-version: 10
-    - run: |
-        bash ci.sh
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    -    run: |
+            bash ci.sh
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+            DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
