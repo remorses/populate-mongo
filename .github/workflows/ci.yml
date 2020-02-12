@@ -6,7 +6,6 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - run: |
-        npm i -g bumpversions
         make ci
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
