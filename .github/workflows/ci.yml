@@ -5,15 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Bump version
-      uses: remorses/bump-version@js
-      with:
-        version_file: VERSION
+    - run: |
+        npm i -g bumpversions
+        make ci
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Publish to Dockerhub
-      uses: elgohr/Publish-Docker-Github-Action@master
-      with:
-        name: mongoke/populate-mongo
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
