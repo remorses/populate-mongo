@@ -1,25 +1,29 @@
 version: '3'
 services:
 
-    populate-db:
-        # image: mongoke/populate-mongo
-        build: .
-        volumes:
-            - ./mongoke.yml/:/conf.yml
-        environment:
-            - DB_URL=mongodb://mongo/db
-    mongoke:
-        ports:
-            - 8090:80
-        image: mongoke/mongoke
-        environment: 
-            - DB_URL=mongodb://mongo/db
-        volumes: 
-            - ./mongoke.yml:/conf.yml
-            # - ./domain.skema:/domain.skema
-    mongo:
-        image: mongo
-        ports:
-        - 27017:27017
-        logging: 
-            driver: none
+  populate-db:
+    # image: mongoke/populate-mongo
+    build: .
+    volumes:
+      - ./mongoke.yml/:/conf.yml
+    environment:
+      - DB_URL=mongodb://mongo/db
+  mongoke:
+    ports:
+      - 8090:80
+    image: mongoke/mongoke
+    environment:
+      - DB_URL=mongodb://mongo/db
+    volumes:
+      - ./mongoke.yml:/conf.yml
+      # - ./domain.skema:/domain.skema
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    logging:
+      driver: none
+x-containerful:
+  id: 5e63f59c6b8b75001cdd93a4
+  name: populate-mongo/remorses
+  region: europe_west1
